@@ -128,7 +128,7 @@ def main(req: func.HttpRequest,  inputblob: func.InputStream, inputblob2: func.I
                  f"cat: {categories}\n")
  
    
-
+    #reponse au format json
     response = {'recommendation': { 0:recommendation[0],1:recommendation[1],2:recommendation[2],3:recommendation[3],4:recommendation[4]}}
     if name:
         return func.HttpResponse(
