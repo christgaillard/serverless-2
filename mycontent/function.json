@@ -15,7 +15,7 @@
       "name": "inputblob",
       "type": "blob",
       "dataType": "binary",
-      "path": "azure-webjobs-hosts/locks/openclassroom/model.pickle",
+      "path": "azure-webjobs-hosts/locks/openclassroom/articles_embeddings.pickle",
       "connection": "AzureWebJobsStorage",
       "direction": "in"
     },
@@ -23,18 +23,11 @@
       "name": "inputblob2",
       "type": "blob",
       "dataType": "binary",
-      "path": "azure-webjobs-hosts/locks/openclassroom/all_clicks_df.csv",
+      "path": "azure-webjobs-hosts/locks/openclassroom/all_clicks_df-2.csv",
       "connection": "AzureWebJobsStorage",
       "direction": "in"
     },
-    {
-      "name": "inputblob3",
-      "type": "blob",
-      "dataType": "binary",
-      "path": "azure-webjobs-hosts/locks/openclassroom/articles_metadata.csv",
-      "connection": "AzureWebJobsStorage",
-      "direction": "in"
-    },
+ 
     {
       "type": "http",
       "direction": "out",

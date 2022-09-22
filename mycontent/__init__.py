@@ -74,12 +74,11 @@ def make_recommendation(user_ID, top_n, df, articles_df):
 
 ## LOAD SAVED MODEL
 def load_model(model_filename):
-    print (">> Loading dump")
     from surprise import dump
     import os
     file_name = os.path.expanduser(model_filename)
     _, loaded_model = dump.load(file_name)
-    print (">> Loaded dump")
+
     return loaded_model
 
 
@@ -95,20 +94,21 @@ def main(req: func.HttpRequest,  inputblob: func.InputStream, inputblob2: func.I
     
     with open(file_model,"w+b") as local_model:
         local_model.write(inputblob.read())
-
+    local_model.close    
+    logging.info('load model.')
+    model = load_model(file_model)
+    logging.info('model loaded.')
     with open(file_clicks,"w+b") as local_csv:
         local_csv.write(inputblob2.read())
-    
+    local_csv.close
+
     with open(file_articles,"w+b") as art_csv:
         art_csv.write(inputblob3.read())
-
+    art_csv.close
     
     df = pd.read_csv(file_clicks, ';')
     articles =pd.read_csv(file_articles,',')
     
-  
-    model = load_model(file_model)
-
     reader = Reader(rating_scale=(0, 1))
     data = Dataset.load_from_df(df[['user_id', 'category_id', 'rating']], reader)
     train_set, test_set = train_test_split(data, test_size=.25)
