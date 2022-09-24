@@ -1,6 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}"
+        },
 
         {
             "name": "Attach to Python Functions",
@@ -8,7 +15,14 @@
             "request": "attach",
             "port": 9091,
             "preLaunchTask": "func: host start",
-        
+        },
+        {
+            "name": "Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://127.0.0.1:5000/",
+            "webRoot": "${workspaceRoot}/src",
+            "runtimeArgs": ["--disable-web-security"]
         }
     ]
 }

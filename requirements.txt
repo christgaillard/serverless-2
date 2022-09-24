@@ -4,4 +4,4 @@
 
 azure-functions
 pandas
-surprise
+scipy
